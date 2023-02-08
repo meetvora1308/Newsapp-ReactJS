@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
 import Sppiner from './Spinner';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export class News extends Component {
-  // static defaultProps = {
-  //   country : "in",
-  //   pageSize: 8,
-  //   category:"general"
-  // }
-  //   static PropTypes = {
-  //     country : PropTypes.string,
-  //     pageSize : PropTypes.number,
-  //     category: PropTypes.string
-      
-  //   }
+  static defaultProps = {
+    country : "in",
+    pageSize: 8,
+    category:"general"
+  }
+  static PropType = {
+    country : PropTypes.string,
+    pageSize : PropTypes.number,
+    category: PropTypes.string
+    
+  }
   constructor() {
     super();
     this.state = {
@@ -79,7 +79,8 @@ export class News extends Component {
             {!this.state.loading && this.state.articles.map((element)=>{
 
               return <div className="col-md-4" key={element.url}>
-                <NewsItem  title={element.title?element.title.slice(0,44):""} description={element.description?element.description.slice(0,88):""} imageUrl={element.urlToImage} newsUrl={element.url} />
+                <NewsItem  title={element.title?element.title.slice(0,44):""} description={element.description?element.description.slice(0,88):""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} 
+                source={element.source.name}/>
               </div>
 
             })}
